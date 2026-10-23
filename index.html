@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume / 个人简历 - Shen Ye (沈叶)</title>
+  <style>
+    :root {
+      --primary: #1e293b;
+      --secondary: #475569;
+      --border: #cbd5e1;
+      --bg-header: #f8fafc;
+      --accent: #2563eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background-color: #f1f5f9;
+      color: var(--primary);
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+
+    .toolbar {
+      max-width: 960px;
+      margin: 0 auto 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .toolbar h1 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--primary);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    .btn.active, .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
+    .resume-container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 36px 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .resume-title {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .resume-title h2 {
+      font-size: 22px;
+      letter-spacing: 0.5px;
+    }
+
+    .resume-title p {
+      font-size: 14px;
+      color: var(--secondary);
+      margin-top: 2px;
+    }
+
+    table.cv-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    table.cv-table td,
+    table.cv-table th {
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      vertical-align: top;
+    }
+
+    .label-cell {
+      width: 24%;
+      background-color: var(--bg-header);
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .value-cell {
+      width: 46%;
+    }
+
+    .photo-label {
+      width: 10%;
+      background-color: var(--bg-header);
+      font-weight: 600;
+      text-align: center;
+      vertical-align: middle !important;
+    }
+
+    .photo-box {
+      width: 20%;
+      text-align: center;
+      vertical-align: middle !important;
+      color: #94a3b8;
+      font-size: 12px;
+      height: 150px;
+    }
+
+    .section-banner {
+      background-color: #e2e8f0;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 10px 16px !important;
+    }
+
+    .en {
+      display: block;
+      color: #0f172a;
+      font-weight: 500;
+    }
+
+    .zh {
+      display: block;
+      color: #475569;
+      font-size: 13.5px;
+      margin-top: 3px;
+    }
+
+    .label-cell .zh {
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .job-block {
+      padding: 14px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .job-block:first-child {
+      padding-top: 0;
+    }
+
+    .job-block:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .job-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 16px;
+      background: #f8fafc;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .job-meta-item {
+      font-size: 13.5px;
+    }
+
+    .job-duty {
+      padding-left: 4px;
+    }
+
+    ul.bilingual-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.bilingual-list li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 8px;
+    }
+
+    ul.bilingual-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    ul.bilingual-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .sig-row {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .checkbox-group {
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Language switching modes */
+    body.mode-en .zh {
+      display: none !important;
+    }
+    body.mode-zh .en {
+      display: none !important;
+    }
+    body.mode-zh .zh {
+      color: #0f172a;
+      font-size: 14px;
+      margin-top: 0;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .toolbar {
+        display: none;
+      }
+      .resume-container {
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <h1>Resume Preview / 简历中英对照视图</h1>
+    <div class="btn-group">
+      <button class="btn active" onclick="setLang('both', this)">中英双语 (Bilingual)</button>
+      <button class="btn" onclick="setLang('en', this)">仅英文 (English Only)</button>
+      <button class="btn" onclick="setLang('zh', this)">仅中文 (Chinese Only)</button>
+      <button class="btn btn-primary" onclick="window.print()">打印 / 导出 PDF</button>
+    </div>
+  </div>
+
+  <div class="resume-container">
+    <div class="resume-title">
+      <h2>CURRICULUM VITAE / 个人履历表</h2>
+      <p>Bilingual Candidate Profile (English &amp; Chinese)</p>
+    </div>
+
+    <table class="cv-table">
+      <tbody>
+        <!-- Row 1: Job Position & Photo -->
+        <tr>
+          <td class="label-cell">
+            <span class="en">Job Position:</span>
+            <span class="zh">应聘职位：</span>
+          </td>
+          <td class="value-cell">
+            <span class="en">Junior Windows Engineer</span>
+            <span class="zh">初级 Windows 工程师</span>
+          </td>
+          <td class="photo-label" rowspan="4">
+            <span class="en">Photo:</span>
+            <span class="zh">照片：</span>
+          </td>
+          <td class="photo-box" rowspan="4">
+            <span class="en">Photo</span>
+            <span class="zh">个人证件照</span>
+          </td>
+        </tr>
+
+        <!-- Row 2: Name -->
+        <tr>
+          <td class="label-cell">
+            <span class="en">Name:</span>
+            <span class="zh">姓名：</span>
+          </td>
+          <td class="value-cell">
+            <span class="en">Shen Ye</span>
+            <span class="zh">沈叶</span>
+          </td>
+        </tr>
+
+        <!-- Row 3: Year of Birth -->
+        <tr>
+          <td class="label-cell">
+            <span class="en">Year of Birth:</span>
+            <span class="zh">出生年份：</span>
+          </td>
+          <td class="value-cell">
+            <span class="en">1981</span>
+            <span class="zh">1981 年</span>
+          </td>
+        </tr>
+
+        <!-- Row 4: Email -->
+        <tr>
+          <td class="label-cell">
+            <span class="en">Email:</span>
+            <span class="zh">电子邮箱：</span>
+          </td>
+          <td class="value-cell">
+            <span class="en">Email: guiren88@qq.com</span>
+            <span class="zh">邮箱：guiren88@qq.com</span>
+          </td>
+        </tr>
+
+        <!-- Row 5: Current Employer -->
+        <tr>
+          <td class="label-cell">
+            <span class="en">Name and Company Address of Current Employer:</span>
+            <span class="zh">当前雇主名称及公司地址：</span>
+          </td>
+          <td colspan="3">
+            <span class="en">Seeking a job</span>
+            <span class="zh">目前求职中（离职待业）</span>
+          </td>
+        </tr>
+
+        <!-- Row 6: Education -->
+        <tr>
+          <td class="label-cell">
+            <span class="en">Education:</span>
+            <span class="zh">教育背景：</span>
+          </td>
+          <td colspan="3">
+            <ul class="bilingual-list">
+              <li>
+                <span class="en">Bachelor's Degree in Computer Science and Technology, Wuhan University of Technology (2009 - 2012)</span>
+                <span class="zh">武汉理工大学 · 计算机科学与技术专业 · 本科（2009 - 2012）</span>
+              </li>
+              <li>
+                <span class="en">Associate Degree in Mechatronics Technology, Southwest University of Science and Technology (2006 - 2008)</span>
+                <span class="zh">西南科技大学 · 机电一体化技术专业 · 大专（2006 - 2008）</span>
+              </li>
+            </ul>
+          </td>
+        </tr>
+
+        <!-- Row 7: Language Skills -->
+        <tr>
+          <td class="label-cell">
+            <span class="en">Language Skills:</span>
+            <span class="zh">语言能力：</span>
+          </td>
+          <td colspan="3">
+            <ul class="bilingual-list">
+              <li>
+                <span class="en">Chinese (Native speaker)</span>
+                <span class="zh">中文（母语）</span>
+              </li>
+              <li>
+                <span class="en">English (Able to read technical documents and write work emails; spoken English is basic and I am studying to improve it)</span>
+                <span class="zh">英语（能够阅读技术文档并撰写工作邮件；口语基础，目前正持续学习提升中）</span>
+              </li>
+            </ul>
+          </td>
+        </tr>
+
+        <!-- Row 8: Employment Record Header -->
+        <tr>
+          <td colspan="4" class="section-banner">
+            <span class="en">Employment Record</span>
+            <span class="zh">工作履历</span>
+          </td>
+        </tr>
+
+        <!-- Row 9: Employment Details -->
+        <tr>
+          <td class="label-cell">
+            <span class="en">Work Experience</span>
+            <span class="zh">详细工作经历</span>
+          </td>
+          <td colspan="3">
+            <!-- Job 1 -->
+            <div class="job-block">
+              <div class="job-meta">
+                <div class="job-meta-item">
+                  <span class="en"><strong>Period:</strong> From [09/2025] To [02/2026]</span>
+                  <span class="zh"><strong>起止时间：</strong> 2025年09月 至 2026年02月</span>
+                </div>
+                <div class="job-meta-item">
+                  <span class="en"><strong>Location(s):</strong> Shanghai</span>
+                  <span class="zh"><strong>工作地点：</strong> 上海</span>
+                </div>
+                <div class="job-meta-item">
+                  <span class="en"><strong>Employer:</strong> Morimatsu Group</span>
+                  <span class="zh"><strong>雇主名称：</strong> 森松集团（Morimatsu Group）</span>
+                </div>
+                <div class="job-meta-item">
+                  <span class="en"><strong>Positions held:</strong> Automation Operations Engineer</span>
+                  <span class="zh"><strong>担任职位：</strong> 自动化运维工程师</span>
+                </div>
+              </div>
+              <div class="job-duty">
+                <span class="en"><strong>Main Responsibilities:</strong> IT infrastructure operations for the group and its four subsidiaries (pharmaceutical, heavy industry, semiconductor and energy), supporting 200+ end-user devices. Maintained servers, networks and core business systems; led a cross-region network architecture upgrade; upgraded backup and disaster recovery solutions for core server clusters; managed IT assets over their full lifecycle; improved automation scripts (Shell / Python) to reduce repetitive manual work.</span>
+                <span class="zh"><strong>主要职责：</strong> 负责集团及旗下四大子公司（制药、重工、半导体、能源领域）的 IT 基础设施运维，支持 200+ 终端设备。负责服务器、网络及核心业务系统的日常维护；主导跨区域网络架构升级改造；升级核心服务器集群的备份与容灾方案；执行 IT 资产全生命周期管理；编写并优化自动化运维脚本（Shell / Python）以减少重复性人工操作。</span>
+              </div>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="job-block">
+              <div class="job-meta">
+                <div class="job-meta-item">
+                  <span class="en"><strong>Period:</strong> From [03/2017] To [08/2025]</span>
+                  <span class="zh"><strong>起止时间：</strong> 2017年03月 至 2025年08月</span>
+                </div>
+                <div class="job-meta-item">
+                  <span class="en"><strong>Location(s):</strong> Shanghai</span>
+                  <span class="zh"><strong>工作地点：</strong> 上海</span>
+                </div>
+                <div class="job-meta-item">
+                  <span class="en"><strong>Employer:</strong> Shanghai Paimilei Investment (Group) Co., Ltd.</span>
+                  <span class="zh"><strong>雇主名称：</strong> 上海派米雷投资（集团）有限公司</span>
+                </div>
+                <div class="job-meta-item">
+                  <span class="en"><strong>Positions held:</strong> IT Manager</span>
+                  <span class="zh"><strong>担任职位：</strong> IT 经理</span>
+                </div>
+              </div>
+              <div class="job-duty">
+                <span class="en"><strong>Main Responsibilities:</strong> Led the group IT team and IT strategy for headquarters and subsidiaries. Managed the IDC data center, Windows Server and Active Directory environment, VMware virtualization platform, patching, backup and disaster recovery, and network security. Provided L2/L3 support and incident troubleshooting for end users across multiple sites. Delivered and maintained core business systems (Mingyuan ERP, Weaver OA, CRM); managed public cloud assets (Alibaba Cloud, Tencent Cloud) and 8 corporate websites.</span>
+                <span class="zh"><strong>主要职责：</strong> 统筹管理集团总部及下属子公司的 IT 团队与信息化战略。负责 IDC 数据中心机房、Windows Server 与 AD 活动目录域环境、VMware 虚拟化平台、系统补丁管理、数据备份与灾难恢复以及网络安全防护。为多地办公区终端用户提供二线/三线（L2/L3）技术支持与故障排障。负责核心业务系统（明源云 ERP、泛微 OA、CRM）的交付上线与日常运维；管理公有云资源（阿里云、腾讯云）及集团旗下 8 个企业官方网站。</span>
+              </div>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="job-block">
+              <div class="job-meta">
+                <div class="job-meta-item">
+                  <span class="en"><strong>Period:</strong> From [03/2016] To [03/2017]</span>
+                  <span class="zh"><strong>起止时间：</strong> 2016年03月 至 2017年03月</span>
+                </div>
+                <div class="job-meta-item">
+                  <span class="en"><strong>Location(s):</strong> Shanghai</span>
+                  <span class="zh"><strong>工作地点：</strong> 上海</span>
+                </div>
+                <div class="job-meta-item">
+                  <span class="en"><strong>Employer:</strong> BYD Company Limited (Shanghai)</span>
+                  <span class="zh"><strong>雇主名称：</strong> 比亚迪股份有限公司（上海）</span>
+                </div>
+                <div class="job-meta-item">
+                  <span class="en"><strong>Positions held:</strong> System Architect</span>
+                  <span class="zh"><strong>担任职位：</strong> 系统架构师</span>
+                </div>
+              </div>
+              <div class="job-duty">
+                <span class="en"><strong>Main Responsibilities:</strong> Led the East China IT team. Managed 100+ enterprise servers (including blade servers) and the application virtualization platform; maintained core manufacturing and finance systems (ERP, MES, WMS, Yonyou, OA); built core IDC rooms and the cross-region network covering Shanghai, Nanjing, Hangzhou and Qingdao.</span>
+                <span class="zh"><strong>主要职责：</strong> 带领华东区 IT 团队。管理维护 100+ 台企业级服务器（含刀片服务器）及应用虚拟化平台；维护核心生产制造与财务系统（ERP、MES 制造执行系统、WMS 仓储管理系统、用友财务、OA 系统）；主导建设核心 IDC 数据中心机房，并搭建覆盖上海、南京、杭州、青岛四地的跨区域互联网络。</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Row 10: Certification -->
+        <tr>
+          <td colspan="4">
+            <div style="margin-bottom: 10px;">
+              <span class="en"><strong>Certification:</strong></span>
+              <span class="zh"><strong>资格证书：</strong></span>
+            </div>
+            <ul class="bilingual-list" style="margin-bottom: 14px;">
+              <li>
+                <span class="en">Computer Room Network Management Engineer</span>
+                <span class="zh">机房网络管理工程师</span>
+              </li>
+              <li>
+                <span class="en">Website Construction and Maintenance</span>
+                <span class="zh">网站建设与维护</span>
+              </li>
+              <li>
+                <span class="en">Enterprise Network Engineering Technology</span>
+                <span class="zh">企业网络工程技术</span>
+              </li>
+              <li>
+                <span class="en">Windows 2000 Advanced Administration</span>
+                <span class="zh">Windows 2000 高级系统管理</span>
+              </li>
+              <li>
+                <span class="en">Computer Maintenance</span>
+                <span class="zh">计算机维护维修</span>
+              </li>
+            </ul>
+            <div>
+              <span class="en"><strong>Training programs attended:</strong> Cisco CCNA / CCNP / CCIE (Written) / CCVP, Microsoft MCSE, Red Hat RHCE / RHCA</span>
+              <span class="zh"><strong>参加过的专业技术培训：</strong> 思科认证（Cisco CCNA / CCNP / CCIE 笔试 / CCVP）、微软认证系统工程师（Microsoft MCSE）、红帽认证工程师/架构师（Red Hat RHCE / RHCA）</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Row 11: Signature -->
+        <tr>
+          <td colspan="4">
+            <div>
+              <span class="en"><strong>Signature:</strong> I, the undersigned, certify to the best of my knowledge and belief that this CV accurately describes my qualifications and my experience. For the sake of fulfilling the background screening needs initiated by the end customer, I agree to provide all the softcopies to support my education and working experience written above for the background screening use only.</span>
+              <span class="zh"><strong>个人声明与签名：</strong> 本人（以下签名者）特此证明，据本人所知及所信，本简历真实、准确地描述了本人的资质与工作经历。为配合终端客户发起的背景调查需求，本人同意提供上述教育背景与工作经历的所有电子版证明材料（仅限用于背景调查用途）。</span>
+            </div>
+            <div class="sig-row">
+              <div class="checkbox-group">
+                <span class="en">√ Yes &nbsp;&nbsp;&nbsp; □ No</span>
+                <span class="zh">√ 同意 (Yes) &nbsp;&nbsp;&nbsp; □ 不同意 (No)</span>
+              </div>
+              <div>
+                <span class="en"><strong>Signature:</strong> Shen Ye</span>
+                <span class="zh"><strong>签名：</strong> 沈叶</span>
+              </div>
+              <div>
+                <span class="en"><strong>Date:</strong> 10/23/2026</span>
+                <span class="zh"><strong>日期：</strong> 2026年10月23日</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function setLang(mode, btn) {
+      document.body.classList.remove('mode-en', 'mode-zh');
+      if (mode === 'en') {
+        document.body.classList.add('mode-en');
+      } else if (mode === 'zh') {
+        document.body.classList.add('mode-zh');
+      }
+      document.querySelectorAll('.toolbar .btn').forEach(b => {
+        if (!b.classList.contains('btn-primary')) {
+          b.classList.remove('active');
+        }
+      });
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
